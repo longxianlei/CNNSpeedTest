@@ -20,13 +20,13 @@ int input_width = 416; // input image width.
 int input_height = 416; // input image height.
 vector<string> classes; // the coco class names.
 bool is_show_img = true; // whether show the image.
-int runnning_times = 100; // the detection loop times for detector.
+int runnning_times = 100; // the detection running loop times for detector.
 
 std::vector<cv::String> GetOutputsNames(const cv::dnn::Net& net);
 void PostProcess(Mat& frame, const vector<Mat>& outs);
 void DrawPred(int classId, float conf, int left, int top, int right, int bottom, Mat& frame);
-void TestFasterRCNN();
-int TestYoloSeries();
+void TestFasterRCNN(); // test faster-rcnn speed.
+int TestYoloSeries(); // test yolo speed.
 
 /*/
 // Xianlei Long, 2022-07-14.
@@ -44,7 +44,7 @@ int main()
 	std::ifstream ifs(classesFile.c_str());
 	string line;
 	while (std::getline(ifs, line)) classes.push_back(line);
-	// Test detection model.
+	// Test detection model speed.
 	is_show_img = false;
 	TestYoloSeries();
 	TestFasterRCNN();
@@ -52,7 +52,7 @@ int main()
 
 int TestYoloSeries()
 {
-	// Load the CNN model and its' config file. (YOLOv3, YOLOv3-tiny, YOLOv4, YOLOv4-tiny series.)
+	// Load the CNN model and its' config file. (YOLOv3, YOLOv3-tiny, YOLOv4, YOLOv4-tiny series.) You can use other model and config file.
 	cv::String cfg_file = "C:\\CODEREPO\\DahuaGal\\model\\yolov3-tiny.cfg";
 	cv::String weights_file = "C:\\CODEREPO\\DahuaGal\\model\\yolov3-tiny.weights";
 	cv::dnn::Net net = cv::dnn::readNetFromDarknet(cfg_file, weights_file);
@@ -79,7 +79,7 @@ int TestYoloSeries()
 		return false;
 	}
 
-	// Begin the timer.
+	// Begin the timer, begin the speed test.
 	chrono::steady_clock::time_point begin_detect = chrono::steady_clock::now();
 	for (int i = 0; i < runnning_times; i++)
 	{
@@ -104,7 +104,6 @@ int TestYoloSeries()
 	chrono::steady_clock::time_point end_detect = chrono::steady_clock::now();
 	cout << "The detect process is  get clock (ms): !!!!!!!!!!!!!" << chrono::duration_cast<chrono::microseconds>(end_detect - begin_detect).count() / 1000 << endl;
 	cout << "Processing speed: " << runnning_times*1000000.0 / float(chrono::duration_cast<chrono::microseconds>(end_detect - begin_detect).count()) << " FPS!" << endl;
-
 }
 
 vector<cv::String> GetOutputsNames(const cv::dnn::Net& net)
@@ -194,7 +193,6 @@ void DrawPred(int classId, float conf, int left, int top, int right, int bottom,
 	putText(frame, label, Point(left, top), FONT_HERSHEY_SIMPLEX, 0.75, Scalar(0, 0, 0), 1);
 }
 
-
 class faster_rcnn
 {
 public:
@@ -235,6 +233,7 @@ void faster_rcnn::detect(Mat& frame)
 	vector<Mat> outs;
 	this->net.forward(outs, this->net.getUnconnectedOutLayersNames());
 
+	// post processing.
 	vector<float> confidences;
 	vector<Rect> boxes;
 	vector<int> classes_id;
