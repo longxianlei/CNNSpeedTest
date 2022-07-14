@@ -10,7 +10,7 @@ Just load the config file and the corresponding weights.
 We have provided the Faster-RCNN-ResNet50, Faster-RCNN-Inception as the basic model.
 
 | Model name               | GPU NVIDIA GeForce 1080 Ti  | CPU Intel i7-8700k @3.70GHz. |
-| ------------------------ | --------------------------- | ---------------------------- |
+| :------------------------: | :---------------------------: | :----------------------------: |
 | YOLOv3-tiny              | 333.58 fps                  | 82.85 fps                    |
 | YOLOv3                   | 84.55 fps                   | 12.61 fps                    |
 | YOLOv4-tiny              | 257.42 fps                  | 84.02 fps                    |
