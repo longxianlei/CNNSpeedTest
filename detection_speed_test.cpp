@@ -213,9 +213,12 @@ public:
 			this->net = cv::dnn::readNetFromTensorflow("./weights/faster_rcnn_resnet50_coco_2018_01_28/frozen_inference_graph.pb",
 				"./weights/faster_rcnn_resnet50_coco_2018_01_28.pbtxt"); //trained on COCO.
 		}
+		// use GPU
 		this->net.setPreferableBackend(cv::dnn::DNN_BACKEND_CUDA);
 		this->net.setPreferableTarget(cv::dnn::DNN_TARGET_CUDA);
-
+		// use CPU
+		//this->net.setPreferableBackend(cv::dnn::DNN_BACKEND_OPENCV);
+		//this->net.setPreferableTarget(cv::dnn::DNN_TARGET_CPU);
 	}
 	void detect(Mat& frame);
 private:
