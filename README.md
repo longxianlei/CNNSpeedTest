@@ -1,6 +1,6 @@
 # CNNSpeedTest
 Estimate the processing speed of several CNN object detection models.
-Using C++ code. Based on the opencv and Nvidia GPU.
+Using C++ code. Based on the opencv and Nvidia GPU. You can choose GPU or CPU model as you like.
 
 ## YOLO series
 You can test YOLOv3, YOLOv3-tiny, YOLOv4, YOLOv4-tiny, and so on from the DarkNet weibsite.
