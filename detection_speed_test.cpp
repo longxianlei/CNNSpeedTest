@@ -1,4 +1,13 @@
-﻿#include <iostream>
+/*/
+// Xianlei Long, 2022-07-14.
+// There include processing speed tests on different object detection models.
+// Include YOLOv3, YOLOv3-tiny, YOLOv4, YOLOv4-tiny, FasterRCNN_RestNet50,FasterRCNN_Inception.
+// Just load different model weights and their corresponding config file. Then, statistic the detection time.
+// Note, to reduce the processing cost, you should load the model early, and use the model to detect once.
+// (warmming up is improtant).
+/*/
+
+#include <iostream>
 #include <fstream>
 #include <opencv2/opencv.hpp>
 #include <opencv.hpp>
@@ -27,15 +36,6 @@ void PostProcess(Mat& frame, const vector<Mat>& outs);
 void DrawPred(int classId, float conf, int left, int top, int right, int bottom, Mat& frame);
 void TestFasterRCNN(); // test faster-rcnn speed.
 int TestYoloSeries(); // test yolo speed.
-
-/*/
-// Xianlei Long, 2022-07-14.
-// There include processing speed tests on different object detection models.
-// Include YOLOv3, YOLOv3-tiny, YOLOv4, YOLOv4-tiny, FasterRCNN_RestNet50,FasterRCNN_Inception.
-// Just load different model weights and their corresponding config file. Then, statistic the detection time.
-// Note, to reduce the processing cost, you should load the model early, and use the model to detect once.
-// (warmming up is improtant).
-/*/
 
 int main()
 {
