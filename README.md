@@ -23,3 +23,11 @@ Then, we run these model on CPU, Intel Core i7-8700k @3.70GHz to test the speed 
 
 You can contact me if you have any questions.
 (The model and it's config file is easy to find, just goole the name of weights file and config file provided in the c++ code.)
+
+# We add some semantic segmentation models into this repo, which includes ENet and FCN-8s, and FCN-32s.
+You can download the corresponding c++ file and run it.
+You just need to download the model weights and the config files.
+
+  1. enet_segmentation.cpp  model: model-cityscapes.net
+  2. fcn_segmentation.cpp  config_file: fcn32s-heavy-pascal.prototxt, weights: fcn32s-heavy-pascal.caffemodel
+
