@@ -23,7 +23,7 @@ The image size is 400x340. We run the detector on 1080-ti GPU to statistic the p
 Then, we run these model on CPU, Intel Core i7-8700k @3.70GHz to test the speed on CPU.
 
 You can contact me if you have any questions.
-(The model and it's config file is easy to find, just goole the name of weights file and config file provided in the c++ code.)
+(The model and it's config file are easy to find, just goole the name of weights file and config file provided in the c++ code.)
 
 # OpenCV Semantic Segmentation (FCN and ENet)
 We add some semantic segmentation models into this repo, which includes ENet and FCN-8s, and FCN-32s.
