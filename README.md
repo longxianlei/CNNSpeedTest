@@ -4,7 +4,7 @@ Using C++ code. Based on the opencv and Nvidia GPU. You can choose GPU or CPU mo
 
 ## YOLO series
 You can test YOLOv3, YOLOv3-tiny, YOLOv4, YOLOv4-tiny, YOLOv7-tiny, and so on from the DarkNet weibsite.
-Just load the config file and the corresponding weights.
+Just load the config file and the corresponding weights. All the weights and config file can be founded here. [https://github.com/AlexeyAB/darknet/releases](https://github.com/AlexeyAB/darknet/releases), [cfg file](https://github.com/AlexeyAB/darknet/tree/master/cfg)
 
 ## Faster-RCNN series
 We have provided the Faster-RCNN-ResNet50, Faster-RCNN-Inception as the basic model.
